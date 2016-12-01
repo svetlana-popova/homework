@@ -1,7 +1,7 @@
 #pragma once
 
 
-int StrLength(char str[]) //вычисляет длину строки до Enter
+int StrLength(char str[]) //РІС‹С‡РёСЃР»СЏРµС‚ РґР»РёРЅСѓ СЃС‚СЂРѕРєРё РґРѕ Enter
 {
 	int length = 0;
 	while (str[length])
@@ -13,7 +13,7 @@ int StrLength(char str[]) //вычисляет длину строки до Enter
 
 
 
-bool IsAlphabet(char ch)//проверяет, входит ли символ в алфавит
+bool IsAlphabet(char ch)//РїСЂРѕРІРµСЂСЏРµС‚, РІС…РѕРґРёС‚ Р»Рё СЃРёРјРІРѕР» РІ Р°Р»С„Р°РІРёС‚
 {
 	if (ch >= 'A' && ch <= 'Z' || ch >= 'a' && ch <= 'z')
 		return true;
@@ -25,7 +25,8 @@ bool IsAlphabet(char ch)//проверяет, входит ли символ в алфавит
 
 
 
-bool IsAllAlphabet(char str[]) //проверяет, все ли символы в строке из адфавита
+bool IsAllAlphabet(char str[]) //РїСЂРѕРІРµСЂСЏРµС‚, РІСЃРµ Р»Рё СЃРёРјРІРѕР»С‹ РІ СЃС‚СЂРѕРєРµ РёР· Р°РґС„Р°РІРёС‚Р°
+{
 {
 	int length = StrLength(str);
 	bool ok = true;
@@ -47,7 +48,7 @@ bool IsAllAlphabet(char str[]) //проверяет, все ли символы в строке из адфавита
 
 
 
-void ToUpper(char& ch) //перевод в верхний регистр
+void ToUpper(char& ch) //РїРµСЂРµРІРѕРґ РІ РІРµСЂС…РЅРёР№ СЂРµРіРёСЃС‚СЂ
 {
 	if (ch >= 'a' && ch <= 'z')
 		ch -= 32;
@@ -58,7 +59,7 @@ void ToUpper(char& ch) //перевод в верхний регистр
 
 
 
-void ToUpper(char str[])      //перевод в верхний регистр всех маленьких символов в строке
+void ToUpper(char str[])      //РїРµСЂРµРІРѕРґ РІ РІРµСЂС…РЅРёР№ СЂРµРіРёСЃС‚СЂ РІСЃРµС… РјР°Р»РµРЅСЊРєРёС… СЃРёРјРІРѕР»РѕРІ РІ СЃС‚СЂРѕРєРµ
 {
 	int i = 0;
 	while (str[i])
@@ -71,7 +72,7 @@ void ToUpper(char str[])      //перевод в верхний регистр всех маленьких символо
 
 
 
-int ToCompare(char a[], char b[]) //Сравнить, какая из строк больше
+int ToCompare(char a[], char b[]) //РЎСЂР°РІРЅРёС‚СЊ, РєР°РєР°СЏ РёР· СЃС‚СЂРѕРє Р±РѕР»СЊС€Рµ
 {
 	int i = 0;
 	while (a[i] && b[i])
@@ -86,7 +87,7 @@ int ToCompare(char a[], char b[]) //Сравнить, какая из строк больше
 
 
 
-bool IsEquals(char a[], char b[]) //Узнать, равны ли строки
+bool IsEquals(char a[], char b[]) //РЈР·РЅР°С‚СЊ, СЂР°РІРЅС‹ Р»Рё СЃС‚СЂРѕРєРё (СЂРµРіРёСЃС‚СЂРѕР·Р°РІРёСЃРёРјР°СЏ)
 {
 	int L1 = StrLength(a);
 	int L2 = StrLength(b);
@@ -98,7 +99,7 @@ bool IsEquals(char a[], char b[]) //Узнать, равны ли строки
 
 
 
-void CopyString(char a[], char b[]) //Скопировать вторую строку в первую
+void CopyString(char a[], char b[]) //РЎРєРѕРїРёСЂРѕРІР°С‚СЊ РІС‚РѕСЂСѓСЋ СЃС‚СЂРѕРєСѓ РІ РїРµСЂРІСѓСЋ
 {
 	a = "";
 	int L2 = StrLength(b);
@@ -107,7 +108,7 @@ void CopyString(char a[], char b[]) //Скопировать вторую строку в первую
 }
 
 
-void MakePolindrom(char a[], char temp[]) //Сделать из строки перевертыш
+void MakePolindrom(char a[], char temp[]) //РЎРґРµР»Р°С‚СЊ РёР· СЃС‚СЂРѕРєРё РїРµСЂРµРІРµСЂС‚С‹С€
 {
 	int length = StrLength(a);
 	for (int j = 0; j < length; j++)
@@ -116,7 +117,7 @@ void MakePolindrom(char a[], char temp[]) //Сделать из строки перевертыш
 }
 
 
-bool IsPolindrom(char a[]) //является ли строка полиндромом
+bool IsPolindrom(char a[]) //СЏРІР»СЏРµС‚СЃСЏ Р»Рё СЃС‚СЂРѕРєР° РїРѕР»РёРЅРґСЂРѕРјРѕРј
 {
 	int length = StrLength(a);
 	int i = 0, j = 0;
@@ -132,7 +133,7 @@ bool IsPolindrom(char a[]) //является ли строка полиндромом
 }
 
 
-int ToFindLetter(char str[], char l, int a[]) //найти индекс буквы в строке
+int ToFindLetter(char str[], char l, int a[]) //РЅР°Р№С‚Рё РёРЅРґРµРєСЃ Р±СѓРєРІС‹ РІ СЃС‚СЂРѕРєРµ
 {
 	int length = StrLength(str);
 	int j = 0;
@@ -151,7 +152,7 @@ int ToFindLetter(char str[], char l, int a[]) //найти индекс буквы в строке
 
 
 
-bool IsVowel(char l) //является ли буква гласной
+bool IsVowel(char l) //СЏРІР»СЏРµС‚СЃСЏ Р»Рё Р±СѓРєРІР° РіР»Р°СЃРЅРѕР№
 {
 	char vowels[13] = { "aAeEiIoOuUyY" };
 	for (int i = 0; i <= 12; i++)
