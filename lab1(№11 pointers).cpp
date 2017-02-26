@@ -110,19 +110,28 @@ void DeleteandShift(int* a, int& n)
 
 int ConvertTo8(int n)
 {
+	int k;
+	if (n < 0)
+		k = -n;
+	else
+		k = n;
 	int multiplier = 1;
 	int result = 0;
 	int remainder;
-	while (n >= 8)
+	while (k >= 8)
 	{
-		remainder = n % 8;
+		remainder = k % 8;
 		result += multiplier * remainder;
-		n = n / 8;
+		k = k / 8;
 		multiplier *= 10;
 	}
-	remainder = n % 8;
+	remainder = k % 8;
 	result += multiplier * remainder;
-	return result;
+	int answer;
+	if (n < 0)
+		answer = -result;
+	else answer = result;
+	return answer;
 }
 
 void DeleteRepeatedElements(int* a, int& n)
