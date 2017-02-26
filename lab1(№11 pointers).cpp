@@ -9,8 +9,8 @@ int* AllocateMemory(int);
 void EnterArray(int*, int);
 void DisplayArray(int*, int);
 bool IfNegativeAfterPositive(int, int);
-void CopyToAnotherArray(int* , int*, int& int&);
-void DeleteandShift(int* , int& );
+void CopyToAnotherArray(int* , int*, int&, int&);
+void DeleteandShift(int* a, int& n);
 int ConvertTo8(int);
 void DeleteRepeatedElements(int*, int&);
 int CountOddDigits(int);
@@ -41,8 +41,8 @@ int main()
 	BubbleSort(b, m);
 	cout << "Sort array: ";
 	DisplayArray(b, m);
-	delete [] a;
-	delete [] b;
+	delete[] a;
+	delete[] b;
 	return 0;
 }
 
