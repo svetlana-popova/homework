@@ -40,6 +40,8 @@ int main()
 	BubbleSort(b, n);
 	cout << "Sort array: ";
 	DisplayArray(b, n);
+	delete [] a;
+	delete [] b;
 	return 0;
 }
 
