@@ -1,5 +1,5 @@
 //Tested on "32 -67 43 -78 44 89 -91 12 -98" result "-91 -67 -78 -98"
-//Tested on "1 -32 2 -32 4 -56 7 -112 90 -111" result "-111 -32 -56 -112"
+//Tested on "1 -32 2 -32 4 -56 7 -112 90 -111" result "-111 -56 -32 -112"
 
 
 #include <iostream>
@@ -9,8 +9,8 @@ int* AllocateMemory(int);
 void EnterArray(int*, int);
 void DisplayArray(int*, int);
 bool IfNegativeAfterPositive(int, int);
-void CopyToAnotherArray(int* , int*, int&);
-void DeleteandShift(int* a, int& n);
+void CopyToAnotherArray(int* , int*, int& int&);
+void DeleteandShift(int* , int& );
 int ConvertTo8(int);
 void DeleteRepeatedElements(int*, int&);
 int CountOddDigits(int);
@@ -29,17 +29,18 @@ int main()
 	cout << "Source array: ";
 	DisplayArray(a, n);
 	cout << endl;
-	CopyToAnotherArray(a, b, n);
+	int m = 0;
+	CopyToAnotherArray(a, b, n, m);
 	cout << "Array of negative numbers: ";
-	DisplayArray(b, n);
+	DisplayArray(b, m);
 	cout << endl;
-	DeleteRepeatedElements(b, n);
+	DeleteRepeatedElements(b, m);
 	cout << "Without repetead elements: ";
-	DisplayArray(b, n);
+	DisplayArray(b, m);
 	cout << endl;
-	BubbleSort(b, n);
+	BubbleSort(b, m);
 	cout << "Sort array: ";
-	DisplayArray(b, n);
+	DisplayArray(b, m);
 	delete [] a;
 	delete [] b;
 	return 0;
@@ -80,15 +81,17 @@ bool IfNegativeAfterPositive(int a, int b)
 		return false;
 }
 
-void CopyToAnotherArray(int* a, int* b, int& n)
+void CopyToAnotherArray(int* a, int* b, int& n, int& m)
 {
 	int* v = b;
 	for (int* p = a + 1; p < a + n; p++)
 	{
+
 		bool ok = IfNegativeAfterPositive(*p, *(p - 1));
 		if (ok == true)
 		{
 			*v = *p;
+			m++;
 			DeleteandShift(p, n);
 			v++;
 		}
@@ -156,16 +159,22 @@ void Swap(int& a, int& b)
 
 void BubbleSort(int* a, int n)
 {
-
-	for (int* g = a + n - 1; g > a; g--)
-	{
-		int i1 = CountOddDigits(ConvertTo8(*g));
-		int i2 = CountOddDigits(ConvertTo8(*(g - 1)));
-		if (i2 > i1)
+	bool flag = true;
+	for (int* p = a; p < a + n - 1; p++)
+		while (flag)
 		{
-			Swap(*g, *(g - 1));
+			flag = false;
+
+			for (int* g = a + n - 1; g > a; g--)
+			{
+				int i1 = CountOddDigits(ConvertTo8(*g));
+				int i2 = CountOddDigits(ConvertTo8(*(g - 1)));
+				if (i2 > i1)
+				{
+					Swap(*g, *(g - 1));
+					flag = true;
+				}
+			}
 
 		}
-	}
-
 }
