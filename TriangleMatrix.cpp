@@ -5,7 +5,7 @@ int* AllocateMemory(int);
 void DisplayArray(int**, int, int*);
 void ArrayConsecutiveNumbers(int* a, int n);
 void EnterTriangleArray(int**, int*, int);
-void TransposeMatrix(int**, int*, int);
+void ReflectMatrix(int**, int*, int);
 
 
 
@@ -20,7 +20,7 @@ int main()
 	EnterTriangleArray(matrix, lengths, n);
 	DisplayArray(matrix, n, lengths);
 	cout << endl;
-	TransposeMatrix(matrix, lengths, n);
+	ReflectMatrix(matrix, lengths, n);
 	cout << endl;
 
 }
@@ -77,7 +77,7 @@ void EnterTriangleArray(int** matrix, int* lengths, int n)
 	}
 }
 
-void TransposeMatrix(int** matrix, int* lengths, int n)
+void ReflectMatrix(int** matrix, int* lengths, int n)
 {
 	for (int i = 0; i < n; i++)
 	{
