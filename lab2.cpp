@@ -1,10 +1,10 @@
 #include <iostream>
 #include "math.h"
 using namespace std;
+typedef double(*Key)(double x);
 double CountFactorial(int);
-double MySinus(double x, double acc);
-void EnterMatrixMySinus(double**, int, int);
-void EnterMatrixSin(double**, int, int);
+double MySinus(double x);
+void EnterMatrixWithKey(double**, int, int, Key);
 double* AllocateMemory(int);
 double** AllocateMemory(int, int);
 void DisplayArray(double**, int, int);
@@ -21,8 +21,8 @@ int main()
 	cin >> columns;
 	double ** realMatrix = AllocateMemory(rows, columns);
 	double** expectedMatrix = AllocateMemory(rows, columns);
-	EnterMatrixMySinus(realMatrix, rows, columns);
-	EnterMatrixSin(expectedMatrix, rows, columns);
+	EnterMatrixWithKey (realMatrix, rows, columns, MySinus);
+	EnterMatrixWithKey(expectedMatrix, rows, columns, sin);
 	DisplayArray(realMatrix, rows, columns);
 	cout << endl;
 	DisplayArray(expectedMatrix, rows, columns);
@@ -42,8 +42,9 @@ double CountFactorial(int n)
 	return answer;
 }
 
-double MySinus(double x, double acc)
+double MySinus(double x)
 {
+	double acc = 0.00001;
 	double sum = 0, temp = 1;
 	int i = 1, p = 1;
 	do
@@ -57,25 +58,13 @@ double MySinus(double x, double acc)
 	return sum;
 }
 
-void EnterMatrixMySinus(double** matrix, int n, int m)
+void EnterMatrixWithKey(double** matrix, int n, int m, Key criteria)
 {
 	for (int i = 0; i < n; i++)
 	{
 		for (int j = 0; j < m; j++)
 		{
-			double temp = ((double)i / (j + 1) / 10);
-			matrix[i][j] = MySinus(temp, 0.00001);
-		}
-	}
-}
-
-void EnterMatrixSin(double** matrix, int n, int m)
-{
-	for (int i = 0; i < n; i++)
-	{
-		for (int j = 0; j < m; j++)
-		{
-			matrix[i][j] = sin((double)i / (j + 1) / 10);
+			matrix[i][j] = criteria ((double)i / (j + 1) / 10);
 		}
 	}
 }
